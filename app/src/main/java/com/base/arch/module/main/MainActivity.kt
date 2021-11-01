@@ -20,8 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private val viewModel: MainViewModel by viewModels()
 
     //当前选中的Tab底栏
-    @TabId
-    private var currentTabId = TabId.HOME
+    private var currentTabId = HOME
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,19 +54,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun initTabs() {
         val tabs = listOf(
             Tab(
-                TabId.HOME,
+                HOME,
                 getString(R.string.page_home),
                 R.drawable.selector_btn_home,
                 HomeFragment::class
             ),
             Tab(
-                TabId.RADIO,
+                RADIO,
                 getString(R.string.page_radio),
                 R.drawable.selector_btn_radio,
                 RadioFragment::class
             ),
             Tab(
-                TabId.RADIO,
+                MINE,
                 getString(R.string.page_mine),
                 R.drawable.selector_btn_mine,
                 MineFragment::class
@@ -101,9 +100,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
      */
     private fun updateTitle() {
         val title = when (currentTabId) {
-            TabId.HOME -> getString(R.string.page_home)
-            TabId.RADIO -> getString(R.string.page_radio)
-            TabId.MINE -> getString(R.string.page_mine)
+            HOME -> getString(R.string.page_home)
+            RADIO -> getString(R.string.page_radio)
+            MINE -> getString(R.string.page_mine)
             else -> ""
         }
 
@@ -119,8 +118,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     /**
      * 设置当前选择的tab
      */
-    private fun setCurrentTab(@TabId tabID: String) {
+    private fun setCurrentTab(tabID: String) {
         viewBinding.fragmentTabHost.setCurrentTabByTag(tabID)
     }
 
+
+    companion object {
+        const val HOME = "home"
+        const val RADIO = "radio"
+        const val MINE = "mine"
+    }
 }
