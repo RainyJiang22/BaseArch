@@ -1,17 +1,20 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
+def libraries = rootProject.libraries
+
 android {
-    compileSdk 31
+    compileSdk build_versions.compile_sdk
 
     defaultConfig {
         applicationId "com.base.arch"
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
+        versionCode build_versions.app_version_code
+        versionName build_versions.app_version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,11 +36,99 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //Android官方库
+    implementation libraries.androidx_core
+    implementation libraries.androidx_appcompat
+    implementation libraries.androidx_recyclerview
+    implementation libraries.androidx_annotation
+    implementation libraries.android_material
+    implementation libraries.androidx_constraintLayout
+    implementation libraries.androidx_arch_core
+    implementation libraries.lifecycle_runtime_ktx
+    implementation libraries.lifecycle_livedata_ktx
+    implementation libraries.lifecycle_viewmodel_ktx
+    implementation libraries.androidx_activity_ktx
+    implementation libraries.androidx_fragment_ktx
+    implementation libraries.room_runtime
+    implementation libraries.room_rxjava2
+    implementation libraries.room_ktx
+    kapt(libraries.room_compiler)
+    implementation libraries.work_runtime
+    implementation libraries.work_runtime_ktx
+
+    //测试junit
+    testImplementation libraries.junit
+    androidTestImplementation libraries.androidx_junit
+    androidTestImplementation libraries.expresso_core
+
+
+    //kotlin
+    implementation libraries.kotlin_stdlib
+    implementation libraries.kotlin_stdlib_jdk7
+    implementation libraries.kotlin_stdlib_jdk8
+
+
+    //协程
+    implementation libraries.kotlinx_coroutines_core
+    implementation libraries.kotlinx_coroutines_android
+
+    //mmkv
+    implementation libraries.mmkv
+
+    //leakcanary
+    implementation libraries.leakcanary_android
+
+    //json
+    implementation libraries.fastjson
+    implementation libraries.gson
+
+    //retrofit
+    implementation libraries.retrofit
+    implementation libraries.adapter_rxjava2
+    implementation libraries.converter_gson
+    implementation libraries.converter_scalars
+
+    //okio
+    implementation libraries.okio
+
+    //okhttp
+    implementation libraries.okhttp
+    implementation libraries.logging_interceptor
+
+    //rxjava
+    implementation libraries.rxjava
+    implementation libraries.rxandroid
+
+    //微信分享
+    implementation libraries.wechat_sdk_android
+
+    //gif
+    implementation libraries.android_gif_drawable
+
+    //lottie
+    implementation libraries.lottie
+
+    //glide
+    implementation libraries.glide
+    implementation libraries.glide_okhttp3_integration
+    kapt(libraries.glide_compiler)
+
+    //ImmersionBar(状态栏、导航栏适配)
+    implementation libraries.immersionbar
+
+    //fragment快速实现
+    implementation libraries.immersionbar_components
+
+    //kotlin扩展
+    implementation libraries.immersionbar_ktx
+
+    //右滑返回
+    implementation libraries.swipebackLayout
+
+    //下拉刷新
+    implementation libraries.ultra
+
+    //加载动画
+    implementation libraries.loadingView
+
 }

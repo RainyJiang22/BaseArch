@@ -1,0 +1,215 @@
+/**
+ * 依赖库版本管理
+ */
+def versions = [:]
+versions.androidx_junit = "1.1.3"
+versions.androidx_espresso = "3.4.0"
+versions.androidx_appcompat = "1.3.1"
+versions.androidx_core = "1.6.0"
+versions.androidx_recyclerview = "1.2.1"
+versions.androidx_constraintlayout = "2.1.0"
+versions.androidx_annotation = "1.2.0"
+versions.androidx_arch_core = "2.1.0"
+versions.androidx_lifecycle = "2.3.1"
+versions.androidx_room = "2.3.0"
+versions.androidx_work_manager = "2.5.0"
+versions.androidx_activity_ktx = "1.3.1"
+versions.androidx_fragment_ktx = "1.3.6"
+versions.android_material = "1.4.0"
+versions.kotlin_coroutines = "1.5.1"
+versions.glide = "4.12.0"
+versions.mmkv = "1.2.10"
+versions.fastjson = "1.1.71.android"
+versions.gson = "2.8.6"
+versions.rxjava2 = "2.2.21"
+versions.rxandroid2 = "2.1.1"
+versions.okio = "2.10.0"
+versions.okhttp3 = "4.9.1"
+versions.retrofit2 = "2.9.0"
+versions.wechat_sdk = "6.7.9"
+versions.gif = "1.2.23"
+versions.lottie = "4.1.0"
+versions.deviceid = "1.0.9"
+versions.junit = "4.13.2"
+versions.leakcanary = "2.7"
+versions.immersionbar = "3.0.0"
+versions.swipebacklayout = "1.1.0"
+versions.ptr = "1.0.11"
+versions.loadingview = "1.0"
+ext.versions = versions
+
+/**
+ * APP版本号、插件版本、编译相关版本管理
+ */
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 31
+build_versions.compile_sdk = 31
+build_versions.android_gradle_plugin = "7.0.2"
+build_versions.kotlin = '1.5.30'
+build_versions.app_version_name = "1.0.0"
+build_versions.app_version_code = 1001
+ext.build_versions = build_versions
+
+/**
+ * 路径常量
+ */
+def paths = [:]
+paths.room_schema = "$projectDir/schemas"
+ext.paths = paths
+
+
+/**
+ * 依赖库
+ */
+def libraries = [
+        //----------Android官方库------------------
+        androidx_appcompat        : "androidx.appcompat:appcompat:${versions.androidx_appcompat}",
+        androidx_core             : "androidx.core:core-ktx:${versions.androidx_core}",
+        androidx_recyclerview     : "androidx.recyclerview:recyclerview:${versions.androidx_recyclerview}",
+        androidx_constraintLayout : "androidx.constraintlayout:constraintlayout:${versions.androidx_constraintlayout}",
+        androidx_annotation       : "androidx.annotation:annotation:${versions.androidx_annotation}",
+        android_material          : "com.google.android.material:material:${versions.android_material}",
+        androidx_arch_core        : "androidx.arch.core:core-common:${versions.androidx_arch_core}",
+        lifecycle_runtime_ktx     : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.androidx_lifecycle}",
+        lifecycle_livedata_ktx    : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.androidx_lifecycle}",
+        lifecycle_viewmodel_ktx   : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx_lifecycle}",
+        androidx_activity_ktx     : "androidx.activity:activity-ktx:${versions.androidx_activity_ktx}",
+        androidx_fragment_ktx     : "androidx.fragment:fragment-ktx:${versions.androidx_fragment_ktx}",
+        room_runtime              : "androidx.room:room-runtime:${versions.androidx_room}",
+        room_rxjava2              : "androidx.room:room-rxjava2:${versions.androidx_room}",
+        room_ktx                  : "androidx.room:room-ktx:${versions.androidx_room}",
+        room_compiler             : "androidx.room:room-compiler:${versions.androidx_room}",
+        work_runtime              : "androidx.work:work-runtime:${versions.androidx_work_manager}",
+        work_runtime_ktx          : "androidx.work:work-runtime-ktx:${versions.androidx_work_manager}",
+
+        //------------Kotlin-------------
+        kotlin_stdlib             : "org.jetbrains.kotlin:kotlin-stdlib:${build_versions.kotlin}",
+        kotlin_stdlib_jdk7        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${build_versions.kotlin}",
+        kotlin_stdlib_jdk8        : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${build_versions.kotlin}",
+
+
+        //-----------协程----------------
+        kotlinx_coroutines_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin_coroutines}",
+        kotlinx_coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlin_coroutines}",
+
+
+        //------------测试-------------
+        junit                     : "junit:junit:${versions.junit}",
+        androidx_junit            : "androidx.test.ext:junit:${versions.androidx_junit}",
+        expresso_core             : "androidx.test.espresso:espresso-core:3.4.0",
+
+        //----------腾讯MMKV--------------
+        mmkv                      : "com.tencent:mmkv:${versions.mmkv}",
+
+        //-----------LeakCanary--------------
+        leakcanary_android        : "com.squareup.leakcanary:leakcanary-android:${versions.leakcanary}",
+
+        //--------------JSON-----------------
+        fastjson                  : "com.alibaba:fastjson:${versions.fastjson}",
+        gson                      : "com.google.code.gson:gson:${versions.gson}",
+
+
+        //--------------网络相关-----------------
+        // Retrofit2
+        retrofit                  : "com.squareup.retrofit2:retrofit:${versions.retrofit2}",
+        adapter_rxjava2           : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit2}",
+        converter_gson           : "com.squareup.retrofit2:converter-gson:${versions.retrofit2}",
+        converter_scalars         : "com.squareup.retrofit2:converter-scalars:${versions.retrofit2}",
+
+        // OkIO
+        okio                      : "com.squareup.okio:okio:${versions.okio}",
+
+        // OkHttp
+        okhttp                    : "com.squareup.okhttp3:okhttp:${versions.okhttp3}",
+        logging_interceptor       : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp3}",
+
+
+        //Rxjava
+        rxjava                    : "io.reactivex.rxjava2:rxjava:${versions.rxjava2}",
+        rxandroid                 : "io.reactivex.rxjava2:rxandroid:${versions.rxandroid2}",
+
+        // 微信分享SDK
+        wechat_sdk_android        : "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:${versions.wechat_sdk}",
+
+
+        // Gif
+        android_gif_drawable      : "pl.droidsonroids.gif:android-gif-drawable:${versions.gif}",
+
+
+        // Lottie
+        lottie                    : "com.airbnb.android:lottie:${versions.lottie}",
+
+        // Glide
+        glide                     : "com.github.bumptech.glide:glide:${versions.glide}",
+        glide_okhttp3_integration       : "com.github.bumptech.glide:okhttp3-integration:${versions.glide}",
+        glide_compiler            : "com.github.bumptech.glide:compiler:${versions.glide}",
+
+
+        // ImmersionBar(状态栏、导航栏适配)
+        immersionbar              : "com.gyf.immersionbar:immersionbar:${versions.immersionbar}",
+
+        // fragment快速实现
+        immersionbar_components   : "com.gyf.immersionbar:immersionbar-components:${versions.immersionbar}",
+
+        // kotlin扩展
+        immersionbar_ktx          : "com.gyf.immersionbar:immersionbar-ktx:${versions.immersionbar}",
+
+        // 右滑返回
+        swipebackLayout           : "me.imid.swipebacklayout.lib:library:${versions.swipebacklayout}",
+
+        // 下拉刷新
+        ultra                     : "in.srain.cube:ultra-ptr:${versions.ptr}",
+
+        //加载动画
+        loadingView               : "com.ldoublem.loadingview:loadingviewlib:${versions.loadingview}"
+
+]
+ext.libraries = libraries
+
+/**
+ * 仓库地址管理
+ */
+def addRepos(RepositoryHandler handler) {
+    handler.maven {
+        allowInsecureProtocol true
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'http://maven.aliyun.com/repository/google/'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://maven.aliyun.com/repository/jcenter/'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://maven.aliyun.com/repository/public/'
+    }
+    handler.maven {
+        allowInsecureProtocol true
+        url 'https://jitpack.io'
+    }
+    handler.mavenCentral()
+    handler.google()
+}
+
+ext.addRepos = this.&addRepos
+
+/**
+ * 读取本机配置，主要用于本地差异化构建(local.properties不会提交到仓库)
+ */
+def readLocalProperty(String key) {
+    boolean value = false
+    def file = rootProject.file('local.properties')
+    if (file.exists() && file.isFile()) {
+        Properties properties = new Properties()
+        properties.load(file.newDataInputStream())
+        value = Boolean.parseBoolean(properties.getProperty(key, 'false'))
+    }
+    println(String.format("property key=%s value=%S", key, value))
+    return value
+}
+
+ext.readLocalProperty = this.&readLocalProperty
