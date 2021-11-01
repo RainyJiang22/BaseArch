@@ -32,6 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    lintOptions {
+        disable 'RestrictedApi'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
