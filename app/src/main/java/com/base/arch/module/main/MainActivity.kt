@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private val viewModel: MainViewModel by viewModels()
 
     //当前选中的Tab底栏
-    private var currentTabId = HOME
+    private var currentTabId = TabId.HOME
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,19 +54,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun initTabs() {
         val tabs = listOf(
             Tab(
-                HOME,
+                TabId.HOME,
                 getString(R.string.page_home),
                 R.drawable.selector_btn_home,
                 HomeFragment::class
             ),
             Tab(
-                RADIO,
+                TabId.RADIO,
                 getString(R.string.page_radio),
                 R.drawable.selector_btn_radio,
                 RadioFragment::class
             ),
             Tab(
-                MINE,
+                TabId.MINE,
                 getString(R.string.page_mine),
                 R.drawable.selector_btn_mine,
                 MineFragment::class
@@ -100,9 +100,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
      */
     private fun updateTitle() {
         val title = when (currentTabId) {
-            HOME -> getString(R.string.page_home)
-            RADIO -> getString(R.string.page_radio)
-            MINE -> getString(R.string.page_mine)
+            TabId.HOME -> getString(R.string.page_home)
+            TabId.RADIO -> getString(R.string.page_radio)
+            TabId.MINE -> getString(R.string.page_mine)
             else -> ""
         }
 
@@ -122,10 +122,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         viewBinding.fragmentTabHost.setCurrentTabByTag(tabID)
     }
 
-
-    companion object {
-        const val HOME = "home"
-        const val RADIO = "radio"
-        const val MINE = "mine"
-    }
 }
