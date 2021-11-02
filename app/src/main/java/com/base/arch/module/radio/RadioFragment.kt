@@ -3,6 +3,7 @@ package com.base.arch.module.radio
 import android.os.Bundle
 import android.view.View
 import com.base.arch.base.BaseFragment
+import com.base.arch.const.PageName
 import com.base.arch.databinding.FragmentRadioBinding
 
 /**
@@ -16,6 +17,8 @@ class RadioFragment : BaseFragment<FragmentRadioBinding>(FragmentRadioBinding::i
         super.onViewCreated(view, savedInstanceState)
         initView()
     }
+
+    override fun getPageName(): String = PageName.RADIO
 
     private fun initView() {
 

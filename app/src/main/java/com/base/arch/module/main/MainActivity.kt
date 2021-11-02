@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.base.arch.R
 import com.base.arch.base.BaseActivity
 import com.base.arch.bean.Tab
+import com.base.arch.const.PageName
 import com.base.arch.const.TabId
 import com.base.arch.databinding.ActivityMainBinding
 import com.base.arch.module.home.HomeFragment
@@ -34,6 +35,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun swipeBackEnable(): Boolean {
         return false
     }
+
+    override fun getPageName(): String = PageName.MAIN
 
 
     /**

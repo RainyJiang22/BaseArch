@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import com.base.arch.base.BaseFragment
 import com.base.arch.const.EventName
+import com.base.arch.const.PageName
 import com.base.arch.databinding.FragmentHomeBinding
 import com.base.arch.eventbus.BaseEventBus
 
@@ -18,6 +19,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+    }
+
+    override fun getPageName(): String {
+        return PageName.HOME
     }
 
     private fun initView() {

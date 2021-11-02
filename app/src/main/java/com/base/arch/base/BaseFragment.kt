@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable
  * Fragment基类
  */
 abstract class BaseFragment<T : ViewBinding>(val inflater: (inflater: LayoutInflater, container: ViewGroup?, attachToRoot: Boolean) -> T) :
-    Fragment() {
+    Fragment(),IPageName {
 
     protected lateinit var viewBinding: T
     private val compositeDisposable = CompositeDisposable()

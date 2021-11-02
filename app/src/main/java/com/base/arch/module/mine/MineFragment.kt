@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import com.base.arch.base.BaseFragment
 import com.base.arch.const.EventName
+import com.base.arch.const.PageName
 import com.base.arch.databinding.FragmentMineBinding
 import com.base.arch.eventbus.BaseEventBus
 
@@ -18,6 +19,9 @@ class MineFragment : BaseFragment<FragmentMineBinding>(FragmentMineBinding::infl
         super.onViewCreated(view, savedInstanceState)
         initView()
     }
+
+    override fun getPageName(): String = PageName.MINE
+
 
     private fun initView() {
 
