@@ -8,10 +8,12 @@
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/drawable/selector_btn_radio.xml" value="0.1" />
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/drawable/selector_icon_back.xml" value="0.1" />
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/activity_main.xml" value="0.17481884057971014" />
+        <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/base_recyclerview.xml" value="0.1" />
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/fragment_home.xml" value="0.1693840579710145" />
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/fragment_mine.xml" value="0.1693840579710145" />
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/fragment_radio.xml" value="0.1693840579710145" />
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/view_navigation.xml" value="0.25" />
+        <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/view_recycler_footer.xml" value="0.125" />
         <entry key="..\:/project/AndroidProject/BaseArch/app/src/main/res/layout/view_tab_indicator.xml" value="0.40714285714285714" />
       </map>
     </option>

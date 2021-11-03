@@ -1,0 +1,100 @@
+package com.base.arch.base.list.base
+
+
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewParent
+import androidx.recyclerview.widget.RecyclerView
+import com.base.arch.base.list.CustomRecyclerView
+import com.base.arch.base.list.multitype.ItemViewDelegate
+
+/**
+ * @author jacky
+ * @date 2021/11/3
+ */
+abstract class BaseItemViewDelegate<T : BaseViewData<*>, VH : RecyclerView.ViewHolder> :
+    ItemViewDelegate<T, VH>() {
+
+
+    override fun onBindViewHolder(holder: VH, item: T) {
+
+        //条目点击监听
+        holder.itemView.setOnClickListener {
+            performItemClick(it, item, holder)
+        }
+
+        //条目长按监听
+        holder.itemView.setOnLongClickListener {
+            return@setOnLongClickListener performItemLongClick(it, item, holder)
+        }
+    }
+
+
+    /**
+     * 条目点击监听
+     */
+    protected fun performItemClick(
+        view: View,
+        item: BaseViewData<*>,
+        holder: RecyclerView.ViewHolder
+    ) {
+        val recyclerView = getRecyclerView(view)
+        if (null != recyclerView) {
+            val position: Int = holder.absoluteAdapterPosition
+            val id = holder.itemId
+            recyclerView.performItemClick(view, item, position, id)
+        }
+    }
+
+    /**
+     * 条目长按监听
+     */
+    protected fun performItemLongClick(
+        view: View,
+        item: BaseViewData<*>,
+        holder: RecyclerView.ViewHolder
+    ): Boolean {
+        var consumed = false
+        val recyclerView = getRecyclerView(view)
+        if (null != recyclerView) {
+            val position: Int = holder.absoluteAdapterPosition
+            val id = holder.itemId
+            consumed = recyclerView.performItemLongClick(view, item, position, id)
+        }
+        return consumed
+    }
+
+
+    /**
+     * 子View点击监听
+     */
+    protected fun performItemChildViewClick(
+        view: View,
+        item: BaseViewData<*>,
+        holder: RecyclerView.ViewHolder,
+        extra: Any?
+    ) {
+        val recyclerView = getRecyclerView(view)
+        if (null != recyclerView) {
+            val position: Int = holder.absoluteAdapterPosition
+            val id = holder.itemId
+            recyclerView.performItemChildViewClick(view, item, position, id, extra)
+        }
+    }
+
+    /**
+     * 加载自定义的recyclerview
+     */
+    private fun getRecyclerView(child: View): CustomRecyclerView? {
+        var recyclerView: CustomRecyclerView? = null
+        var parent: ViewParent = child.parent
+        while (parent is ViewGroup) {
+            if (parent is CustomRecyclerView) {
+                recyclerView = parent
+                break
+            }
+            parent = parent.parent
+        }
+        return recyclerView
+    }
+}
