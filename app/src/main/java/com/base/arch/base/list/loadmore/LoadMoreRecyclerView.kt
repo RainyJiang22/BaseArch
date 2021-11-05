@@ -1,10 +1,8 @@
-package com.nan.xarch.base.list.loadmore
+package com.base.arch.base.list.loadmore
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.RecyclerView
-import com.base.arch.base.list.loadmore.LoadMoreAdapter
-import com.base.arch.base.list.loadmore.LoadMoreRecyclerScrollListener
 
 class LoadMoreRecyclerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
