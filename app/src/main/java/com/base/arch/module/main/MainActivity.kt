@@ -28,6 +28,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         initSystemBar()
         updateTitle()
         initTabs()
+        initData()
+    }
+
+    private fun initData() {
+
     }
 
 
