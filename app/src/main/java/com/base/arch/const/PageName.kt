@@ -10,5 +10,6 @@ class PageName {
         const val HOME = "home"
         const val MINE = "mine"
         const val RADIO = "radio"
+        const val ABOUT = "about"
     }
 }
