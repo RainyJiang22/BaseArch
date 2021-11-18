@@ -8,5 +8,5 @@ data class DataBean(
     var description: String? = null,
     var id: Int = 0,
     var name: String? = null,
-    var thumbnail: String? = null
+    var thumbnail: String? = null,
 )

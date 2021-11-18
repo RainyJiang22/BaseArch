@@ -1,6 +1,7 @@
 package com.base.arch.base.list.base
 
 import com.base.arch.base.list.multitype.MultiTypeAdapter
+import com.base.arch.item.RadioViewDelegate
 
 /**
  * @author jacky
@@ -9,7 +10,7 @@ import com.base.arch.base.list.multitype.MultiTypeAdapter
 open class BaseAdapter : MultiTypeAdapter() {
 
     init {
-
+        register(RadioViewDelegate())
     }
 
 

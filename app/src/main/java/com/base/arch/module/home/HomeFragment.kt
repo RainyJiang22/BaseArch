@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.base.arch.R
 import com.base.arch.base.BaseFragment
@@ -12,6 +13,7 @@ import com.base.arch.const.PageName
 import com.base.arch.databinding.FragmentHomeBinding
 import com.base.arch.eventbus.BaseEventBus
 import com.base.arch.module.main.MainViewModel
+import com.base.arch.util.BlurUtil
 
 /**
  * @author jacky
@@ -48,5 +50,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         BaseEventBus.observe(viewLifecycleOwner, EventName.TEST) { message: String ->
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
+
+        val bitmap = BlurUtil.blur(
+            requireContext(),
+            ContextCompat.getDrawable(requireContext(), R.drawable.test),
+            0.4f,
+            8f
+        )
+        viewBinding.radioBg.setImageBitmap(bitmap)
     }
 }

@@ -2,9 +2,15 @@ package com.base.arch.module.radio
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.base.arch.R
 import com.base.arch.base.BaseFragment
+import com.base.arch.base.list.CustomRecyclerView
+import com.base.arch.base.list.base.BaseViewData
 import com.base.arch.const.PageName
 import com.base.arch.databinding.FragmentRadioBinding
 import com.base.arch.util.BlurUtil
@@ -15,6 +21,7 @@ import com.base.arch.util.BlurUtil
  */
 class RadioFragment : BaseFragment<FragmentRadioBinding>(FragmentRadioBinding::inflate) {
 
+    private val viewModel: RadioViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,13 +31,29 @@ class RadioFragment : BaseFragment<FragmentRadioBinding>(FragmentRadioBinding::i
     override fun getPageName(): String = PageName.RADIO
 
     private fun initView() {
+        viewBinding.rvList.init(
+            CustomRecyclerView.Config()
+                .setViewModel(viewModel)
+                .setPullRefreshEnable(false)
+                .setPullUploadMoreEnable(false)
+                .setOnItemClickListener(object : CustomRecyclerView.OnItemClickListener {
+                    override fun onItemClick(
+                        parent: RecyclerView,
+                        view: View,
+                        viewData: BaseViewData<*>,
+                        position: Int,
+                        id: Long
+                    ) {
+                        Toast.makeText(context, "条目点击: ${viewData.value}", Toast.LENGTH_SHORT)
+                            .show()
+                    }
 
-        val bitmap = BlurUtil.blur(
-            requireContext(),
-            ContextCompat.getDrawable(requireContext(), R.drawable.test),
-            0.4f,
-            8f
+                })
         )
-        viewBinding.radioBg.setImageBitmap(bitmap)
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        //添加页面打点
     }
 }
