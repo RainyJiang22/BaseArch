@@ -13,11 +13,10 @@ open class BaseAdapter : MultiTypeAdapter() {
         register(RadioViewDelegate())
     }
 
-
     open fun setViewData(viewData: List<BaseViewData<*>>) {
-       items.clear()
-       items.addAll(viewData)
-       notifyDataSetChanged()
+        items.clear()
+        items.addAll(viewData)
+        notifyDataSetChanged()
     }
 
     open fun replaceViewData(viewData: BaseViewData<*>, position: Int) {
@@ -66,6 +65,7 @@ open class BaseAdapter : MultiTypeAdapter() {
             null
         }
     }
-
-
+//    open fun getViewData(position:Int): BaseRecyclerViewModel {
+//
+//    }
 }

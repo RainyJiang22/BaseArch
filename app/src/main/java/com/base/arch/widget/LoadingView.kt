@@ -20,7 +20,6 @@ class LoadingView constructor(
     val viewBinding = ViewLoadingBinding.inflate(LayoutInflater.from(context), this, true).apply {
         viewLoading.setViewColor(ContextCompat.getColor(context, R.color.theme_color))
     }
-
     override fun setVisibility(visibility: Int) {
         super.setVisibility(visibility)
         if (visibility == View.VISIBLE) {

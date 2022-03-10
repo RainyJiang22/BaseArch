@@ -36,7 +36,7 @@ import com.base.arch.util.toNetworkSetting
  * @date 2021/11/3
  * 自定义recyclerview
  */
-class CustomRecyclerView constructor(
+class CustomRecyclerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 

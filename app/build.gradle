@@ -145,4 +145,8 @@ dependencies {
     //加载动画
     implementation libraries.loadingView
 
+    implementation libraries.shimmerView
+    implementation libraries.BaseRecyclerViewAdapterHelper
+
+
 }

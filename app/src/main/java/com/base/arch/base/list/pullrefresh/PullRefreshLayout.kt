@@ -67,11 +67,11 @@ class PullRefreshLayout @JvmOverloads constructor(
         val currentPos = ptrIndicator.currentPosY
         val lastPos = ptrIndicator.lastPosY
 
-        if (currentPos < offsetToRefresh && lastPos >= offsetToRefresh) {
+        if (offsetToRefresh in (currentPos + 1)..lastPos) {
             if (isUnderTouch && status == PTR_STATUS_PREPARE) {
                 viewBinding.tvRefreshState.setText(R.string.refresh_pull_down_to_refresh)
             }
-        } else if (currentPos > offsetToRefresh && lastPos <= offsetToRefresh) {
+        } else if (offsetToRefresh in lastPos until currentPos) {
             if (isUnderTouch && status == PTR_STATUS_PREPARE) {
                 viewBinding.tvRefreshState.setText(R.string.refresh_release_to_refresh)
                 performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)

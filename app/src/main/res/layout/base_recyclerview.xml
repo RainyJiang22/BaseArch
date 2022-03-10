@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <!--下拉刷新和列表-->
     <com.base.arch.base.list.pullrefresh.PullRefreshLayout
         android:id="@+id/refresh_layout"
@@ -19,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
-    </com.base.arch.base.list.pullrefresh.PullRefreshLayout>
 
+    </com.base.arch.base.list.pullrefresh.PullRefreshLayout>
 
     <com.base.arch.widget.LoadingView
         android:id="@+id/loading_view"
@@ -41,9 +40,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

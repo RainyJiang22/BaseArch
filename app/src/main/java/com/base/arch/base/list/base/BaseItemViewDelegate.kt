@@ -4,6 +4,7 @@ package com.base.arch.base.list.base
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewParent
+import androidx.annotation.CallSuper
 import androidx.recyclerview.widget.RecyclerView
 import com.base.arch.base.list.CustomRecyclerView
 import com.base.arch.base.list.multitype.ItemViewDelegate
@@ -12,32 +13,22 @@ import com.base.arch.base.list.multitype.ItemViewDelegate
  * @author jacky
  * @date 2021/11/3
  */
-abstract class BaseItemViewDelegate<T : BaseViewData<*>, VH : RecyclerView.ViewHolder> :
-    ItemViewDelegate<T, VH>() {
+abstract class BaseItemViewDelegate<T : BaseViewData<*>, VH : RecyclerView.ViewHolder> : ItemViewDelegate<T, VH>() {
 
-
+    @CallSuper
     override fun onBindViewHolder(holder: VH, item: T) {
-
-        //条目点击监听
         holder.itemView.setOnClickListener {
             performItemClick(it, item, holder)
         }
-
-        //条目长按监听
         holder.itemView.setOnLongClickListener {
             return@setOnLongClickListener performItemLongClick(it, item, holder)
         }
     }
 
-
     /**
      * 条目点击监听
      */
-    protected fun performItemClick(
-        view: View,
-        item: BaseViewData<*>,
-        holder: RecyclerView.ViewHolder
-    ) {
+    protected fun performItemClick(view: View, item: BaseViewData<*>, holder: RecyclerView.ViewHolder) {
         val recyclerView = getRecyclerView(view)
         if (null != recyclerView) {
             val position: Int = holder.absoluteAdapterPosition
@@ -49,11 +40,7 @@ abstract class BaseItemViewDelegate<T : BaseViewData<*>, VH : RecyclerView.ViewH
     /**
      * 条目长按监听
      */
-    protected fun performItemLongClick(
-        view: View,
-        item: BaseViewData<*>,
-        holder: RecyclerView.ViewHolder
-    ): Boolean {
+    protected fun performItemLongClick(view: View, item: BaseViewData<*>, holder: RecyclerView.ViewHolder): Boolean {
         var consumed = false
         val recyclerView = getRecyclerView(view)
         if (null != recyclerView) {
@@ -64,16 +51,10 @@ abstract class BaseItemViewDelegate<T : BaseViewData<*>, VH : RecyclerView.ViewH
         return consumed
     }
 
-
     /**
      * 子View点击监听
      */
-    protected fun performItemChildViewClick(
-        view: View,
-        item: BaseViewData<*>,
-        holder: RecyclerView.ViewHolder,
-        extra: Any?
-    ) {
+    protected fun performItemChildViewClick(view: View, item: BaseViewData<*>, holder: RecyclerView.ViewHolder, extra: Any?) {
         val recyclerView = getRecyclerView(view)
         if (null != recyclerView) {
             val position: Int = holder.absoluteAdapterPosition
@@ -83,7 +64,7 @@ abstract class BaseItemViewDelegate<T : BaseViewData<*>, VH : RecyclerView.ViewH
     }
 
     /**
-     * 加载自定义的recyclerview
+     * 获取装载自己的XRecyclerView
      */
     private fun getRecyclerView(child: View): CustomRecyclerView? {
         var recyclerView: CustomRecyclerView? = null
@@ -93,8 +74,9 @@ abstract class BaseItemViewDelegate<T : BaseViewData<*>, VH : RecyclerView.ViewH
                 recyclerView = parent
                 break
             }
-            parent = parent.parent
+            parent = parent.getParent()
         }
         return recyclerView
     }
+
 }
